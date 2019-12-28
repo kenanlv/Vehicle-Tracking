@@ -8,7 +8,7 @@ Object recognizing and tracking play a very crucial role in our daily life. Obje
 
 **Building the project using CMake from the command-line:**
 
-Linux:
+_Linux:_
 
     export OpenCV_DIR="~/OpenCV/build"
     mkdir build
@@ -16,14 +16,14 @@ Linux:
     cmake -D OpenCV_DIR=$OpenCV_DIR ..
     make 
 
-MacOSX (Xcode):
+_MacOSX (Xcode):_
 
     export OpenCV_DIR="~/OpenCV/build"
     mkdir build
     cd build
     cmake -G Xcode -D OpenCV_DIR=$OpenCV_DIR ..    
 
-Windows (MS Visual Studio):
+_Windows (MS Visual Studio):_
 
     set OpenCV_DIR="C:\OpenCV\build"
     mkdir build
@@ -83,3 +83,16 @@ Windows (MS Visual Studio):
  <p/>
 
 
+## Reference
+
+[1]"Canny Edge Detector — OpenCV 2.4.13.7 documentation", Docs.opencv.org, 2019. [Online]. [Available Here](https://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html)
+
+[2]A. Consulting, "Histogram of Oriented Gradients | Learn OpenCV", Learnopencv.com, 2019. [Online]. [Available Here](https://www.learnopencv.com/histogram-of-oriented-gradients/)
+
+[3]T. Lindeberg, "Detecting salient blob-like image structures and their scales with a scale-space primal sketch: A method for focus-of-attention", International Journal of Computer Vision, vol. 11, no. 3, pp. 283-318, 1993. Available: 10.1007/bf01469346.
+
+[4]"OpenCV: Optical Flow", Docs.opencv.org, 2019. [Online]. [Available Here](https://docs.opencv.org/3.4/d4/dee/tutorial_optical_flow.html)
+
+[5] Opencv-python-tutroals.readthedocs.io. (2019). Harris Corner Detection — OpenCV-Python Tutorials 1 documentation. [Available Here](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_harris/py_features_harris.html)
+
+[6]"Harris corner detector — OpenCV 2.4.13.7 documentation", Docs.opencv.org, 2019. [Online]. [Available Here](https://docs.opencv.org/2.4/doc/tutorials/features2d/trackingmotion/harris_detector/harris_detector.html)
