@@ -40,7 +40,7 @@ Windows (MS Visual Studio):
 
 <p align="center">
 <a  href="https://www.vrpcommute.tk">
-       <img align="center" height=85 src="https://github.com/kenanlv/Vehicle-Tracking/imgs/flowChart.jpg">
+       <img align="center" height=85 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/flowChart.JPG">
    </a>
  <p/>
 
