@@ -46,18 +46,40 @@ Windows (MS Visual Studio):
 
 ### Canny Edge Detection
 
-    Canny Edge Detection is one way for us to remove the background and extract objects/features from each individual frame. 
-    
-    There are multiple stages in the Canny Edge Detection: noise reduction, finding intensity gradient of the image, non-maximum suppression, and Hysteresis thresholding. 
+> Canny Edge Detection is one way for us to remove the background and extract objects/features from each individual frame. 
+>
+> There are multiple stages in the Canny Edge Detection: noise reduction, finding intensity gradient of the image, non-maximum suppression, and Hysteresis thresholding. 
 
 ### Optical Flow with Corner Detection
-    Optical flow or optic flow is the pattern of apparent motion of objects, surfaces, and edges in a visual scene caused by the relative motion between an observer and a scene. 
-    
-    By finding the strong corner points and comparing with the consecutive frame, we could sift out unwanted points and prevent us from missing potential candidates.
+
+> Optical flow or optic flow is the pattern of apparent motion of objects, surfaces, and edges in a visual scene caused by the relative motion between an observer and a scene. 
+> 
+> By finding the strong corner points and comparing with the consecutive frame, we could sift out unwanted points and prevent us from missing potential candidates.
 
 ## Results
 
-
+### Canny Edge Detection
     
+<p align="center">
+<a  href="https://www.vrpcommute.tk">
+       <img align="center" height=400 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/cornerDetection.JPG">
+   </a>
+ <p/>
+    
+### Optical Flow with Clustering
+    
+<p align="center">
+<a  href="https://www.vrpcommute.tk">
+       <img align="center" height=400 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/opticalFlowCluster.JPG">
+   </a>
+ <p/>
+ 
+### Final Result
+
+<p align="center">
+<a  href="https://www.vrpcommute.tk">
+       <img align="center" height=400 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/result.JPG">
+   </a>
+ <p/>
 
 
