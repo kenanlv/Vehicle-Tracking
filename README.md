@@ -6,6 +6,29 @@ Object recognizing and tracking play a very crucial role in our daily life. Obje
 
 ## Installation
 
+**Building the project using CMake from the command-line:**
+
+Linux:
+
+    export OpenCV_DIR="~/OpenCV/build"
+    mkdir build
+    cd build
+    cmake -D OpenCV_DIR=$OpenCV_DIR ..
+    make 
+
+MacOSX (Xcode):
+
+    export OpenCV_DIR="~/OpenCV/build"
+    mkdir build
+    cd build
+    cmake -G Xcode -D OpenCV_DIR=$OpenCV_DIR ..    
+
+Windows (MS Visual Studio):
+
+    set OpenCV_DIR="C:\OpenCV\build"
+    mkdir build
+    cd build
+    cmake -G "Visual Studio 12 2019" -D OpenCV_DIR=%OpenCV_DIR% ..  
 
 
 ## Methods
@@ -23,14 +46,17 @@ Object recognizing and tracking play a very crucial role in our daily life. Obje
 
 
 
-[bgslibrary](http://i.giphy.com/5A94AZahSIVOw.gif)
+[![bgslibrary](http://i.giphy.com/5A94AZahSIVOw.gif)](https://kenanlv.github.io/)
 
 ### Canny Edge Detection
 
-    Canny Edge Detection is one way for us to remove the background and extract objects/features from each individual frame. There are multiple stages in the Canny Edge Detection: noise reduction, finding intensity gradient of the image, non-maximum suppression, and Hysteresis thresholding. 
+    Canny Edge Detection is one way for us to remove the background and extract objects/features from each individual frame. 
+    
+    There are multiple stages in the Canny Edge Detection: noise reduction, finding intensity gradient of the image, non-maximum suppression, and Hysteresis thresholding. 
 
 ### Optical Flow with Corner Detection
     Optical flow or optic flow is the pattern of apparent motion of objects, surfaces, and edges in a visual scene caused by the relative motion between an observer and a scene. 
+    
     By finding the strong corner points and comparing with the consecutive frame, we could sift out unwanted points and prevent us from missing potential candidates.
 
 ## Results
