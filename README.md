@@ -2,7 +2,7 @@
 
 Object recognizing and tracking play a very crucial role in our daily life. Object tracking enables us to count and label each tracked object. Our goal is to detect, label, and track all individual vehicles in a given video.
 
-//gif here
+[![bgslibrary](http://i.giphy.com/5A94AZahSIVOw.gif)](https://kenanlv.github.io/)
 
 ## Installation
 
@@ -43,10 +43,6 @@ Windows (MS Visual Studio):
        <img align="center" height=650 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/flowChart.JPG">
    </a>
  <p/>
-
-
-
-[![bgslibrary](http://i.giphy.com/5A94AZahSIVOw.gif)](https://kenanlv.github.io/)
 
 ### Canny Edge Detection
 
