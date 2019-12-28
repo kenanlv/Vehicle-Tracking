@@ -23,7 +23,7 @@ Object recognizing and tracking play a very crucial role in our daily life. Obje
 
 
 
-[![bgslibrary](http://i.giphy.com/5A94AZahSIVOw.gif)]
+[bgslibrary](http://i.giphy.com/5A94AZahSIVOw.gif)
 
 ### Canny Edge Detection
 
