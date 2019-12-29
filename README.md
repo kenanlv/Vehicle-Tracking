@@ -1,8 +1,11 @@
 # Vehicle-Tracking
 
 Object recognizing and tracking play a very crucial role in our daily life. Object tracking enables us to count and label each tracked object. Our goal is to detect, label, and track all individual vehicles in a given video.
+ 
+<p align="center">
+       <img align="center" height=350 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/demo.gif">
+<p/>
 
-[![bgslibrary](https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/demo.gif)
 
 ## Installation
 
@@ -40,7 +43,7 @@ _Windows (MS Visual Studio):_
 
 <p align="center">
 <a  href="https://www.vrpcommute.tk">
-       <img align="center" height=650 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/flowChart.JPG">
+       <img align="center" height=600 src="https://github.com/kenanlv/Vehicle-Tracking/blob/master/imgs/flowChart.JPG">
    </a>
  <p/>
 
