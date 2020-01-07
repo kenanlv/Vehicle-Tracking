@@ -119,21 +119,6 @@ int main(void) {
     int thresh = 170;
     Mat dst;
     
-    // implement corner harris
-    //cornerHarris( old_gray, dst, blockSize, apertureSize, k );
-    //Mat dst_norm, dst_norm_scaled;
-    //normalize( dst, dst_norm, 0, 255, NORM_MINMAX, CV_32FC1, Mat() );
-    //convertScaleAbs( dst_norm, dst_norm_scaled );
-    //for( int i = 0; i < dst_norm.rows ; i++ )
-    //{
-    //    for( int j = 0; j < dst_norm.cols; j++ )
-    //    {
-    //        if( (int) dst_norm.at<float>(i,j) > thresh )
-    //        {
-    //            p0.push_back(Point(j,i));
-    //        }
-    //    }
-    //}
     goodFeaturesToTrack(old_gray, p0, 100, 0.3, 7, Mat(), 7, false, 0.04);
 	// Create a mask image for drawing purposes
 	Mat mask = Mat::zeros(old_frame.size(), old_frame.type());
@@ -198,25 +183,6 @@ int main(void) {
 		cv::Mat imgFrame2Copy = imgFrame2.clone();
 		std::vector<Blob> currentFrameBlobs;
 		findBlob(currentFrameBlobs, img, imgFrame2, imgFrame2Copy, imgThresh, groups);
-   //     for (int i = 0; i < 2; i++) {
-   //         std::vector<Blob> tempFrame;
-			//cv::Mat imgThresh;
-			//cv::Mat img2Cp = imgFrame2.clone();
-			//cv::Mat passIn;
-			//passIn = (i == 0) ? img.clone() : imgFrame1.clone();
-   //         findBlob(tempFrame, passIn, img2Cp, img2Cp, imgThresh, groups); //changed
-   //         farmArr.push_back(tempFrame);
-			//tempFrame.clear();
-   //     }
-   //     std::vector<Blob> currentFrameBlobs;
-   //     for (auto &currentFrameBlobI : farmArr[0]) {
-   //         for (auto &currentFrameBlobJ : farmArr[1]) {
-   //             if (distanceBetweenPoints(currentFrameBlobI.predictedNextPosition, currentFrameBlobJ.predictedNextPosition) == 0.0)
-			//	{	
-   //                 currentFrameBlobs.push_back(currentFrameBlobI);
-   //             }
-   //         }
-   //     }
         if (blnFirstFrame == true) {
             for (auto &currentFrameBlob : currentFrameBlobs) {
                 blobs.push_back(currentFrameBlob);
@@ -225,16 +191,11 @@ int main(void) {
 		else {
             matchCurrentFrameBlobsToExistingBlobs(blobs, currentFrameBlobs);
         }
-
-        //drawAndShowContours(imgThresh.size(), blobs, "imgBlobs");
-
          imgFrame2Copy = imgFrame2.clone();	// get another copy of frame 2 since we changed the previous frame 2 copy in the processing above
 
          drawBlobInfoOnImage(blobs, imgFrame2Copy, colors);
 		 drawCarCountOnImage(carCountRight, imgFrame2Copy);
-         cv::imshow("imgFrame2Copy", imgFrame2Copy);
-//-------------
-        //cv::waitKey(0);	// uncomment this line to go frame by frame for debugging        
+         cv::imshow("imgFrame2Copy", imgFrame2Copy);  
 		
         // now we prepare for the next iteration
 
@@ -299,18 +260,12 @@ void findBlob(std::vector<Blob> &currentFrameBlobs, cv::Mat img, cv::Mat imgFram
         cv::Mat imgThreshCopy = imgThresh.clone();
         std::vector<std::vector<cv::Point> > contours;
         cv::findContours(imgThreshCopy, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
-
-		
-		//drawAndShowContours(imgThresh.size(), contours, "imgContours");
-
         std::vector<std::vector<cv::Point> > convexHulls(contours.size());
 
         for (unsigned int i = 0; i < contours.size(); i++) {
             cv::convexHull(contours[i], convexHulls[i]);
         }
-
-        //drawAndShowContours(imgThresh.size(), convexHulls, "imgConvexHulls");
-
+	
         for (auto &convexHull : convexHulls) {
             Blob possibleBlob(convexHull);
 
@@ -323,19 +278,7 @@ void findBlob(std::vector<Blob> &currentFrameBlobs, cv::Mat img, cv::Mat imgFram
                 (cv::contourArea(possibleBlob.currentContour) / (double)possibleBlob.currentBoundingRect.area()) > 0.50) { // 0.5
 					currentFrameBlobs.push_back(possibleBlob);
             }
-
-			//if (possibleBlob.currentBoundingRect.area() > 400 &&
-			//	possibleBlob.dblCurrentAspectRatio > 0.2 &&
-			//	possibleBlob.dblCurrentAspectRatio < 4.0 &&
-			//	possibleBlob.currentBoundingRect.width > 30 &&
-			//	possibleBlob.currentBoundingRect.height > 30 &&
-			//	possibleBlob.dblCurrentDiagonalSize > 60.0) {
-			//		currentFrameBlobs.push_back(possibleBlob);
-			//}
-			//currentFrameBlobs.push_back(possibleBlob);
         }
-
-        //drawAndShowContours(imgThresh.size(), currentFrameBlobs, "imgCurrentFrameBlobs");
 }
 
 
@@ -488,14 +431,6 @@ void drawCarCountOnImage(int &carCountRight, cv::Mat &imgFrame2Copy) {
     int intFontFace = cv::FONT_HERSHEY_SIMPLEX;
     double dblFontScale = (imgFrame2Copy.rows * imgFrame2Copy.cols) / 450000.0;
     int intFontThickness = (int)std::round(dblFontScale * 2.5);
-	//
-	//// Right way
-	//cv::Size textSize = cv::getTextSize(std::to_string(carCountRight), intFontFace, dblFontScale, intFontThickness, 0);
-	//cv::putText(imgFrame2Copy, "Vehicle count:" + std::to_string(carCountRight), cv::Point(568,25), intFontFace, dblFontScale, SCALAR_RED, intFontThickness);
-
-	//// Left way
-	//cv::Size textSize1 = cv::getTextSize(std::to_string(carCountLeft), intFontFace, dblFontScale, intFontThickness, 0);
-	//cv::putText(imgFrame2Copy, "Vehicle count:" + std::to_string(carCountLeft), cv::Point(10, 25), intFontFace, dblFontScale, SCALAR_YELLOW, intFontThickness);
 }
 
 
