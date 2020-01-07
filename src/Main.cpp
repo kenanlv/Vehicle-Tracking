@@ -1,13 +1,3 @@
-/*
-----------------------------------------------
---- Author         : Ahmet �zl�
---- Mail           : ahmetozlu93@gmail.com
---- Date           : 1st August 2017
---- Version        : 1.0
---- OpenCV Version : 2.4.10
---- Demo Video     : https://youtu.be/3uMKK28bMuY
-----------------------------------------------
-*/
 using namespace std;
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
