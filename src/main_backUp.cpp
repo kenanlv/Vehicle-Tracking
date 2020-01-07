@@ -1,13 +1,3 @@
-/*
-----------------------------------------------
---- Author         : Ahmet �zl�
---- Mail           : ahmetozlu93@gmail.com
---- Date           : 1st August 2017
---- Version        : 1.0
---- OpenCV Version : 2.4.10
---- Demo Video     : https://youtu.be/3uMKK28bMuY
-----------------------------------------------
-*/
 using namespace std;
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
@@ -96,25 +86,6 @@ int main(void) {
 
     capVideo.read(imgFrame1);
     capVideo.read(imgFrame2);
-
-	////CONTROL LINE FOR CARCOUNT ~AREA1 (RIGHT WAY)
-	//int intHorizontalLinePosition = (int)std::round((double)imgFrame1.rows * 0.35);
-	//intHorizontalLinePosition = intHorizontalLinePosition*1.40;
-	//intVerticalLinePosition = (int)std::round((double)imgFrame1.cols * 0.35);
-
-	//crossingLine[0].x = 515;
-	//crossingLine[0].y = intHorizontalLinePosition;
-
-	//crossingLine[1].x = imgFrame1.cols - 1;
-	//crossingLine[1].y = intHorizontalLinePosition;
-
-	////CONTROL LINE FOR CARCOUNT ~AREA2 (LEFT WAY)
-	//crossingLineLeft[0].x = 0;
-	//crossingLineLeft[0].y = intHorizontalLinePosition;
-
-	//crossingLineLeft[1].x = 300;
-	//crossingLineLeft[1].y = intHorizontalLinePosition;
-
     char chCheckForEscKey = 0;
     bool blnFirstFrame = true;
     int frameCount = 2;
@@ -155,7 +126,7 @@ int main(void) {
             }
         }
     }
-    //goodFeaturesToTrack(old_gray, p0, 100, 0.3, 7, Mat(), 7, false, 0.04);
+    //goodFeaturesToTrack(old_gray, p0, 100, 0.3, 7, Mat(), 7, false, 0.04); // this is also a corner checking algo
 	// Create a mask image for drawing purposes
 	Mat mask = Mat::zeros(old_frame.size(), old_frame.type());
 
@@ -186,13 +157,10 @@ int main(void) {
 		}
 		Mat img;
 		add(frame, mask, img);
-		//imshow("Frame", img);
-
+		//imshow("Frame", img); // for debugging purpose
 		// Now update the previous frame and previous points
 		old_gray = frame_gray.clone();
 		p0 = good_new;
-
-
         // bolb detection-------------------
         std::vector<vector<Blob>> farmArr;
 		cv::Mat imgFrame2Copy = imgFrame2.clone();
@@ -221,44 +189,17 @@ int main(void) {
 		else {
             matchCurrentFrameBlobsToExistingBlobs(blobs, currentFrameBlobs);
         }
-
-        //drawAndShowContours(imgThresh.size(), blobs, "imgBlobs");
-
          imgFrame2Copy = imgFrame2.clone();	// get another copy of frame 2 since we changed the previous frame 2 copy in the processing above
 
          drawBlobInfoOnImage(blobs, imgFrame2Copy);
-        //------------
-
-		// Check the rightWay
-		//bool blnAtLeastOneBlobCrossedTheLine = checkIfBlobsCrossedTheLineRight(blobs, intHorizontalLinePosition, carCountRight);
-		//// Check the leftWay
-		//bool blnAtLeastOneBlobCrossedTheLineLeft = checkIfBlobsCrossedTheLineLeft(blobs, intHorizontalLinePosition, carCountLeft);
-		//
-		////rightWay
-  //      if (blnAtLeastOneBlobCrossedTheLine == true) {
-  //          cv::line(imgFrame2Copy, crossingLine[0], crossingLine[1], SCALAR_GREEN, 2);			
-  //      }
-		//else if (blnAtLeastOneBlobCrossedTheLine == false) {
-  //          cv::line(imgFrame2Copy, crossingLine[0], crossingLine[1], SCALAR_RED, 2);			
-  //      }
-
-		////leftway
-		//if (blnAtLeastOneBlobCrossedTheLineLeft == true) {
-		//	cv::line(imgFrame2Copy, crossingLineLeft[0], crossingLineLeft[1], SCALAR_WHITE, 2);
-		//}
-		//else if (blnAtLeastOneBlobCrossedTheLineLeft == false) {
-		//	cv::line(imgFrame2Copy, crossingLineLeft[0], crossingLineLeft[1], SCALAR_YELLOW, 2);
-		//}
-//--------------
-		 drawCarCountOnImage(carCountRight, imgFrame2Copy);
+	    
+	 drawCarCountOnImage(carCountRight, imgFrame2Copy);
 
          cv::imshow("imgFrame2Copy", imgFrame2Copy);
 //-------------
         //cv::waitKey(0);	// uncomment this line to go frame by frame for debugging        
 		
         // now we prepare for the next iteration
-
-        // currentFrameBlobs.clear();
 
         imgFrame1 = imgFrame2.clone();	// move frame 1 up to where frame 2 is
 
@@ -342,8 +283,6 @@ void findBlob(std::vector<Blob> &currentFrameBlobs, cv::Mat img, cv::Mat imgFram
 					currentFrameBlobs.push_back(possibleBlob);
             }
         }
-
-        //drawAndShowContours(imgThresh.size(), currentFrameBlobs, "imgCurrentFrameBlobs");
 }
 
 
@@ -495,14 +434,6 @@ void drawCarCountOnImage(int &carCountRight, cv::Mat &imgFrame2Copy) {
     int intFontFace = cv::FONT_HERSHEY_SIMPLEX;
     double dblFontScale = (imgFrame2Copy.rows * imgFrame2Copy.cols) / 450000.0;
     int intFontThickness = (int)std::round(dblFontScale * 2.5);
-	//
-	//// Right way
-	//cv::Size textSize = cv::getTextSize(std::to_string(carCountRight), intFontFace, dblFontScale, intFontThickness, 0);
-	//cv::putText(imgFrame2Copy, "Vehicle count:" + std::to_string(carCountRight), cv::Point(568,25), intFontFace, dblFontScale, SCALAR_RED, intFontThickness);
-
-	//// Left way
-	//cv::Size textSize1 = cv::getTextSize(std::to_string(carCountLeft), intFontFace, dblFontScale, intFontThickness, 0);
-	//cv::putText(imgFrame2Copy, "Vehicle count:" + std::to_string(carCountLeft), cv::Point(10, 25), intFontFace, dblFontScale, SCALAR_YELLOW, intFontThickness);
 }
 
 
